@@ -1864,7 +1864,7 @@ legend {
 }
 
 label {
-  display: inline-block;
+  display: inline;
   margin-bottom: 5px;
   font-weight: bold;
 }
