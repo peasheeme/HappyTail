@@ -7,7 +7,9 @@
 		empty($_POST['c_col']) ||
 		empty($_POST['c_cantidad']) || 
 		empty($_POST['c_petname']) || 
-		empty($_POST['c_raza']) || 
+		empty($_POST['c_raza']) ||
+		empty($_POST['exampleRadios1']) ||
+		empty($_POST['exampleRadios2']) || 
 		empty($_POST['c_motivo'])
 		
 	){
@@ -23,6 +25,8 @@
 		$cantidad=htmlspecialchars($_POST['c_cantidad']);
 		$petname=htmlspecialchars($_POST['c_petname']);
 		$raza=htmlspecialchars($_POST['c_raza']);
+		$raza=htmlspecialchars($_POST['exampleRadios1']);
+		$raza=htmlspecialchars($_POST['exampleRadios2']);
 		$motivo=htmlspecialchars($_POST['c_motivo']);
 		
 
