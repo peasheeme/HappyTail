@@ -7,7 +7,7 @@
 		!filter_var($_POST['c_email'], FILTER_VALIDATE_EMAIL)	
 	){
 		echo "<script>alert('Favor de llenar todos los campos');</script>";
-		echo "<script>window.location.href='http://m2gcons.com';</script>";
+		echo "<script>window.location.href='http://www.happytail.mx/';</script>";
 	}else{
 		$nombre=htmlspecialchars($_POST['c_name']);
 		$telefono=htmlspecialchars($_POST['c_phone']);
@@ -15,7 +15,7 @@
 		$mensaje=htmlspecialchars($_POST['c_message']);
 
 		//destinatario
-		$destino="info@m2gcons.com";
+		$destino="hola@happytail.mx";
 
 		//asunto
 		$asunto="Nuevo mensaje de '.$nombre.' desde el sitio web";
@@ -29,7 +29,7 @@
 			<html>
 			<head></head>
 			<body>
-				<p> <strong> '.$nombre.'ha enviado el siguiente mensaje a través del sitio web M2G TAX & BUSINESS CONSULTING.com </strong> </p>
+				<p> <strong> '.$nombre.'ha enviado el siguiente mensaje a través del sitio web happytail.mx </strong> </p>
 				<br>
 				<p>'.$mensaje.'</p>
 				<br>
@@ -45,9 +45,9 @@
 		if($envio){
 			echo "<script>alert('Datos enviados exitosamente, Redireccionando');</script>";
 			//Enviando autorespuesta
-			$pwf_header = "info@m2gcons.com\n"
-			."Reply-to: info@m2gcons.com \n";
-			$pwf_asunto = "M2G TAX & BUSINESS CONSULTING Confirmacion";
+			$pwf_header = "hola@happytail.mx\n"
+			."Reply-to: hola@happytail.mx \n";
+			$pwf_asunto = "HappyTail Confirmacion";
 			$pwf_dirigido_a = "$correo";
 			$pwf_mensaje = "Hola $nombre gracias por contactarnos desde nuestro sitio web, \n"
 			."Su mensaje ha sido recibido satisfactoriamente.\n"
@@ -56,13 +56,13 @@
 			."\n"
 			."-----------------------------------------------------------------"
 			."Favor de NO responder este e-mail ya que es generado Automaticamente.\n"
-			."Atte: M2G TAX & BUSINESS CONSULTING S.A. de C.V. \n";
+			."Atte: MHappyTail  \n";
 			
 			@mail($pwf_dirigido_a, $pwf_asunto, $pwf_mensaje, $pwf_header);
-			echo "<script>window.location.href='http://m2gcons.com';</script>";
+			echo "<script>window.location.href='http://www.happytail.mx/';</script>";
 		}else{
 			echo "<script>alert('Intentelo de nuevo en unos momentos, Redireccionando');</script>";
-			echo "<script>window.location.href='http://m2gcons.com';</script>";
+			echo "<script>window.location.href='http://www.happytail.mx/';</script>";
 		}
 	}
 ?>

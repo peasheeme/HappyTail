@@ -1,28 +1,36 @@
 <?php
-	//revisar que los campos no estén vacíos
+//revisar que los campos no estén vacíos
 	if(empty($_POST['c_name']) ||
-		empty($_POST['c_age']) ||
+		empty($_POST['c_lastname']) ||
 		empty($_POST['c_phone']) ||
-		empty($_POST['c_insta']) ||
-		empty($_POST['c_school']) ||
-		empty($_POST['c_carrera']) ||
-		!filter_var($_POST['c_email'], FILTER_VALIDATE_EMAIL)	
+		empty($_POST['c_city']) ||
+		empty($_POST['c_col']) ||
+		empty($_POST['c_cantidad']) || 
+		empty($_POST['c_petname']) || 
+		empty($_POST['c_raza']) || 
+		empty($_POST['c_motivo'])
+		
 	){
 		echo "<script>alert('Favor de llenar todos los campos');</script>";
-		echo "<script>window.location.href='http://#';</script>";
-	}else{
+		echo "<script>window.location.href='http://www.happytail.mx/';</script>";
+	}
+	else{
 		$nombre=htmlspecialchars($_POST['c_name']);
+		$apellido=htmlspecialchars($_POST['c_lastname']);
 		$telefono=htmlspecialchars($_POST['c_phone']);
-		$edad=htmlspecialchars($_POST['c_age']);
-		$insta=htmlspecialchars($_POST['c_insta']);
-		$escuela=htmlspecialchars($_POST['c_school']);
-		$carrera=htmlspecialchars($_POST['c_carrera']);
+		$ciudad=htmlspecialchars($_POST['c_city']);
+		$col=htmlspecialchars($_POST['c_col']);
+		$cantidad=htmlspecialchars($_POST['c_cantidad']);
+		$petname=htmlspecialchars($_POST['c_petname']);
+		$raza=htmlspecialchars($_POST['c_raza']);
+		$motivo=htmlspecialchars($_POST['c_motivo']);
+		
 
 		//destinatario
-		$destino="perla.holguinm@3e-digital.com";
+		$destino="perla.holguin@3e-digital.com";
 
 		//asunto
-		$asunto="Nuevo mensaje de '.$nombre.' desde el sitio web";
+		$asunto="'.$nombre.' Solicitó un paseo gratis a HappyTail";
 
 		//cabeceras
 		$headers = 'MIME-Version: 1.0' . "\r\n";
@@ -33,12 +41,18 @@
 			<html>
 			<head></head>
 			<body>
-				<p> <strong> '.$nombre.'ha enviado el siguiente mensaje a través del sitio web M2G TAX & BUSINESS CONSULTING.com </strong> </p>
-				<br>
-				<p>'.$mensaje.'</p>
-				<br>
+				<p> <strong> '.$nombre.' ha llenado la solicitud para ser parte del equipo HappyTail a través del sitio HappyTail.mx </strong> </p>
 				
-				<p> Contacta a '.$nombre.' al correo  '.$correo.' o al teléfono '.$telefono.'</p> 
+				<p>Nombre: '.$nombre.'</p> 
+				<p>Edad: '.$apellido.' </p>
+				<p>Celular: '.$telefono.' </p>
+				<p>Instagram: '.$ciudad.' </p>
+				<p>Escuela: '.$col.' </p>
+				<p>Carrera: '.$cantidad.' </p>
+				<p>Carrera: '.$petname.' </p>
+				<p>Carrera: '.$raza.' </p>
+				<p>Carrera: '.$motivo.' </p>
+				<p> Llama a '.$nombre.' a su celular '.$telefono.'</p> 
 			</body>
 			</html>
 		';
@@ -47,11 +61,11 @@
 		$envio = mail($destino, $asunto, $contenido, $headers);
 
 		if($envio){
-			echo "<script>alert('Datos enviados exitosamente, Redireccionando');</script>";
+			echo "<script>alert('Tu solicitud ha sido enviada exitosamente Gracias!!');</script>";
 			//Enviando autorespuesta
-			$pwf_header = "perla.holguinm@3e-digital.com\n"
-			."Reply-to: perla.holguinm@3e-digital.com \n";
-			$pwf_asunto = "M2G TAX & BUSINESS CONSULTING Confirmacion";
+			$pwf_header = "perla.holguin@3e-digital.com\n"
+			."Reply-to:perla.holguin@3e-digital.com \n";
+			$pwf_asunto = "HappyTail Confirmacion";
 			$pwf_dirigido_a = "$correo";
 			$pwf_mensaje = "Hola $nombre gracias por contactarnos desde nuestro sitio web, \n"
 			."Su mensaje ha sido recibido satisfactoriamente.\n"
@@ -60,13 +74,28 @@
 			."\n"
 			."-----------------------------------------------------------------"
 			."Favor de NO responder este e-mail ya que es generado Automaticamente.\n"
-			."Atte: M2G TAX & BUSINESS CONSULTING S.A. de C.V. \n";
+			."Este mensaje de correo electrónico puede contener información confidencial o
+			 legalmente protegida y está destinado únicamente para el uso del destinatario (s)
+			 previsto. Cualquier divulgación, difusión, distribución, copia o la toma de
+			 cualquier acción basada en la información aquí contenida está prohibido.
+			 Los correos electrónicos no son seguros y no se puede garantizar que esté 
+			 libre de errores, ya que pueden ser interceptados, modificado, o contener virus.
+			 Cualquier persona que se comunica con nosotros por e-mail se considera que ha 
+			 aceptado estos riesgos.
+			 HappyTail no se hace responsable de los errores u omisiones de este mensaje y
+			 niega cualquier responsabilidad por daños derivados de la utilización del 
+			 correo electrónico. 
+			 Cualquier opinión y otra declaración contenida en este mensaje y cualquier
+			 archivo adjunto son de exclusiva responsabilidad del autor y no representan 
+			 necesariamente las de la empresa."
+			."Atte: HappyTail \n";
 			
 			@mail($pwf_dirigido_a, $pwf_asunto, $pwf_mensaje, $pwf_header);
-			echo "<script>window.location.href='http://#';</script>";
+			echo "<script>window.location.href='http://www.happytail.mx/';</script>";
 		}else{
 			echo "<script>alert('Intentelo de nuevo en unos momentos, Redireccionando');</script>";
-			echo "<script>window.location.href='http://#';</script>";
+			echo "<script>window.location.href='http://www.happytail.mx/';</script>";
 		}
 	}
-?>
+
+	?>
